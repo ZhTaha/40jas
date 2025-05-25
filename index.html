@@ -42,6 +42,11 @@
 		text-align: center;
 		color: #3D2B1F;
 	}
+	.main-5 {
+		font-size: 1.1rem;
+		text-align: center;
+		color: black;
+	}
 
     .overlay {
       background-color: transparent;
@@ -170,6 +175,17 @@
       cursor: pointer;
       animation: textGlow 2s infinite alternate;
     }
+	#toggleButton2 {
+      padding: 1px 10px;
+      font-size: 1.3rem;
+      font-weight: white;
+      border: 30px;
+      border-radius: 5px;
+      background: green;
+      color: white;
+      cursor: pointer;
+      animation: textGlow 2s infinite alternate;
+    }
 
     @keyframes textGlow {
       0% {
@@ -254,8 +270,6 @@
     }
 	.fixed-element {
 		position: fixed;
-		top: 100px;
-		right: 500px;
 		z-index: 1000;
 
   </style>
@@ -312,7 +326,7 @@
   
   <div class="overlay">
 	<p style="font-size: 1.5rem;">Құрметті ағайын-туыс, құда-жекжат, бауырлар, нағашы-жиен, дос-жарандар мен көршілер!</p>
-	<p style="font-size: 1.5rem;">Сіздерді отбазымыздың тірегі, асқар тауымыз</p> 
+	<p style="font-size: 1.5rem;">Сіздерді отбаcымыздың тірегі, асқар тауымыз</p> 
   </div>
   <div class="main">
 	<p class="gold-glow" style="color: #800000; font-size: 3rem;"><strong>Ерланның 40 жас</strong></p>
@@ -384,72 +398,60 @@
   <div class="main-2">
 	<p>💌 Тойға қатысуды растауыңызды сұраймыз<br>👇🏿</p>
   </div>
-  <div class="main-2">
-	<form id="inviteForm">
-    <input type="text" id="name" placeholder="Аты-жөніңіз" required>
-    <select id="status">
-      <option value="Келемін">Келемін</option>
-	  <option value="Келмеймін">Жұбайыммен келемін</option>
-      <option value="Келмеймін">Келмеймін</option>
-    </select>
-	<button type="submit">Растау</button>
-    </form>
+  <div class="main-5">
+	<form id="rsvp-form">
+		<label>Аты-жөніңіз:</label>
+		<input type="text" id="name" required><br>
+		<div class="radio-group">
+			<label>Тойға қатысасыз ба?</label>
+			<label class="radio-label"><input type="radio" id="status" value="Иә" required> Иә</label>
+			<label class="radio-label"><input type="radio" id="status" value="Жоқ" required> Жоқ</label>	
+		</div>
+		<label>Неше адам келесіздер?</label> 
+		 <input type="number" id="guests" value="1" min="1"><br><br>
+		<button type="submit" id="toggleButton2">Растау</button>
+     </form>
+	 <p id="result"></p>
 	</div>
-	 <div class="main">
-	<p class="gold-glow" style="color: #FF8C00;font-size: 1.7rem;"><strong>✩✩✩<strong></p>
-  </div>
-  <script>
-    const botToken = 'СІЗДІҢ_BOT_TOKEN';
-    const chatId = 'СІЗДІҢ_CHAT_ID';
+	<div class="main">
+		<p class="gold-glow" style="color: #FF8C00;font-size: 1.7rem;"><strong>✩✩✩<strong></p>
+	</div>
+	<script>
+		const TOKEN = '7282516849:AAHb7fKsG-JWJapt6h3ZjJ6BtWmm7LjzJf4';
+		const CHAT_ID = '652908324';
 
-    document.getElementById('inviteForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+		document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+		e.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const status = document.getElementById('status').value;
+			const name = document.getElementById('name').value;
+			const status = document.getElementById('status').value;
+			const guests = document.getElementById('guests').value;
 
-      const message = Жаңа жауап:\nАты-жөні: ${name}\nМәртебесі: ${status};
+		  const message = `Жаңа жауап:
+						Аты-жөні: ${name}
+						Мәртебесі: ${status}
+						Қонақтар саны: ${guests}`;
 
-      fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message
-        })
-      })
-      .then(res => {
-        if (res.ok) {
-          alert("Хабарлама жіберілді!");
-        } else {
-          alert("Қате болды.");
-        }
-      });
-    });
+		  const url = 'https://api.telegram.org/bot${TOKEN}/sendMessage';
+
+		  fetch(url, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+			  chat_id: CHAT_ID,
+			  text: message
+			})
+		  })
+		  .then(response => response.json())
+		  .then(data => {
+			document.getElementById('result').innerText = 'Хабарлама жіберілді!';
+		  })
+		  .catch(error => {
+			document.getElementById('result').innerText = 'Қате шықты. Кейінірек қайталап көріңіз.';
+			console.error('Error:', error);
+		  });
+		});
   </script>
 
-  <div class="modal" id="formModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeForm()">Х</span>
-      <iframe id="googleForm" src=""></iframe>
-    </div>
-  </div>
-  <script>
-    function openForm() {
-      const modal = document.getElementById('formModal');
-      const iframe = document.getElementById('googleForm');
-      iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeG_IzQzU-uuc1jI83fap-dzTkMc9F4IzbV32ucTBtb3yFPnw/viewform?embedded=true&hl=kk";
-      modal.style.display = 'block';
-    }
-
-    function closeForm() {
-      const modal = document.getElementById('formModal');
-      const iframe = document.getElementById('googleForm');
-      iframe.src = "";
-      modal.style.display = 'none';
-    }
-   </script>
 </body>
 </html>

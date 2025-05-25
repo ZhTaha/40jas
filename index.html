@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <title>40 жас мерей тойға шақыру</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lobster', serif;
+      background: url('fon.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+	  text-shadow:
+        0 0 0px white,
+        0 0 1px white,
+        0 0 5px white,
+        0 0 10px white;	 
+    }
+	
+	.main {
+		font-size: 3rem;
+		text-align: center;
+		color: #800000;
+	}
+	.main-2 {
+		font-size: 1.4rem;
+		text-align: center;
+		color: #3D2B1F;
+		text-shadow:
+        0 0 0px white,
+		0 0 4px white;
+	}
+	.main-3 {
+		font-size: 1.4rem;
+		text-align: center;
+		color: #800000;
+	}
+	.main-4 {
+		font-size: 1.1rem;
+		text-align: center;
+		color: #3D2B1F;
+	}
+
+    .overlay {
+      background-color: transparent;
+      padding: 0px 0px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: 5px;
+      margin-top: 40px;
+	  color: #191970;
+	  text-shadow:
+		0 0 5px white,
+		0 0 10px white,
+		0 0 15px white,
+		0 0 25px white;
+    }
+
+    .overlay p {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .overlay a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .overlay a:hover {
+      text-decoration: underline;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 10px auto;
+      padding: 0 20px;
+      background-color: transparent;
+    }
+
+    iframe {
+      width: 100%;
+      height: 950px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+    }
+	.form-link {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+	  
+    }
+    .form-link a {
+      background-color: #228B22;
+      color: white;
+      padding: 5px 20px;
+      text-decoration: none;
+	  text-shadow:
+        0 0 5px	#696969;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      transition: background 0.3s ease;
+	  animation: blink 2s infinite;
+    }
+    .form-link a:hover {
+      background-color: #3d755e;
+    }
+	 .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 700px;
+      margin: 5% auto;
+      background: transparent;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+	
+	@keyframes blink {
+      0% { background-color: #ff0000; }
+      25% { background-color: #00ff00; }
+      50% { background-color: #0000ff; }
+      75% { background-color: #ffff00; }
+      100% { background-color: #ff00ff; }
+    }
+
+    @media (max-width: 600px) {
+      .overlay p {
+        font-size: 1rem;
+      }
+      iframe {
+        height: 1100px;
+      }
+    }
+	#toggleButton {
+      padding: 0px 0px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% {
+        color: #ff4081;
+        text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081;
+      }
+      25% {
+        color: #00e676;
+        text-shadow: 0 0 5px #00e676, 0 0 15px #00e676;
+      }
+      50% {
+        color: #7c4dff;
+        text-shadow: 0 0 5px #7c4dff, 0 0 15px #7c4dff;
+      }
+      75% {
+        color: #ffab00;
+        text-shadow: 0 0 5px #ffab00, 0 0 15px #ffab00;
+      }
+      100% {
+        color: #00bcd4;
+        text-shadow: 0 0 5px #00bcd4, 0 0 15px #00bcd4;
+      }
+    }
+	 .gold-glow {
+      color: gold; /* Алтын түс */
+	  font-size: 3rem;
+      text-shadow:
+        0 0 0px #FFD700,
+        0 0 1px #FFA500,
+        0 0 5px #FFC107,
+        0 0 10px #FFEB3B;
+      animation: glowGold 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowGold {
+      0% {
+        text-shadow:
+          0 0 0px #FFD700,
+          0 0 2px #FFA500,
+          0 0 5px #FFC107,
+          0 0 10px #FFEB3B;
+      }
+      100% {
+        text-shadow:
+          0 0 5px #FFEB3B,
+          0 0 10px #FFC107,
+          0 0 15px #FFA500,
+          0 0 20px #FFD700;
+      }
+    }
+	/* Алтын ұшқындар контейнері */
+    .sparkles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #FF8C00;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleMove 8s linear infinite;
+      filter: blur(1px);
+    }
+
+    @keyframes sparkleMove {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(20vw) scale(3.5);
+        opacity: 0;
+      }
+    }
+	.fixed-element {
+		position: fixed;
+		top: 100px;
+		right: 500px;
+		z-index: 1000;
+
+  </style>
+</head>
+<body>
+  
+  <div class="main">
+	<p class="gold-glow" style="color: #FF8C00; font-size: 4rem;"><strong>Тойға шақыру</strong></p>
+	<p class="gold-glow" style="color: #FF8C00; font-size: 1.7rem;"><strong>✩✩✩</strong></p>
+	<button id="toggleButton" class="fixed-element" style="font-size: 2rem;">🎼</button>
+  </div>
+  
+  <audio id="myAudio" loop>
+   <source src="40jas.mpeg" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    const audio = document.getElementById("myAudio");
+    const button = document.getElementById("toggleButton");
+    let isPlaying = false;
+	
+	const startAudio = () => {
+      if (!isPlaying) {
+        audio.play();
+        isPlaying = true;
+      }
+      document.body.removeEventListener("click", startAudio);
+    };
+
+    document.body.addEventListener("click", startAudio);
+
+    button.addEventListener("click", () => {
+	  if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+	
+	const container = document.getElementById("sparkleContainer");
+    const count = 100;
+
+    for (let i = 0; i < count; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.top = Math.random() * 50 + "%";
+      sparkle.style.left = Math.random() * 50 + "%";
+      sparkle.style.animationDelay = (Math.random() * 10) + "s";
+      sparkle.style.opacity = Math.random().toFixed(1);
+      sparkle.style.width = sparkle.style.height = (Math.random() * 3 + 2) + "px";
+      container.appendChild(sparkle);
+    }
+  </script>
+  
+  <div class="overlay">
+	<p style="font-size: 1.5rem;">Құрметті ағайын-туыс, құда-жекжат, бауырлар, нағашы-жиен, дос-жарандар мен көршілер!</p>
+	<p style="font-size: 1.5rem;">Сіздерді отбазымыздың тірегі, асқар тауымыз</p> 
+  </div>
+  <div class="main">
+	<p class="gold-glow" style="color: #800000; font-size: 3rem;"><strong>Ерланның 40 жас</strong></p>
+	<p style="font-size: 2rem;">мерей тойына және ұлымыз</p>
+	<p class="gold-glow" style="color: #800000; font-size: 3rem;"><strong>Ерханның сүндет тойына</strong></p>
+  </div>
+  <div class="overlay">
+	<p style="font-size: 1.5rem;">арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
+  </div>
+   <div class="main-2">
+	<p class="gold-glow" style="color: #FF8C00;font-size: 1.5rem;">✧✧✧</p>
+	<h1>🕰</h1>
+	<p><strong>Күні және уақыты:</strong></p>
+	<p>📅 27 шілде 2025 жыл, 🕕сағат 18:00</p>
+	<p style="color: #FF0000;">Тойға дейін:</p>
+    <!-- Кері санау көрсету -->
+	
+	<div id="countdown" style="font-size: 22px; color: #FF0000; font-weight: bold; margin-bottom: 20px;"></div>
+	<script>
+	  // Той уақыты —
+	  const weddingDate = new Date("2025-07-27T18:00:00");
+
+	  function updateCountdown() {
+		const now = new Date();
+		const diff = weddingDate - now;
+
+		if (diff <= 0) {
+		  document.getElementById("countdown").innerHTML = "🎉 Той басталды!";
+		  clearInterval(timer);
+		  return;
+		}
+
+		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		const minutes = Math.floor((diff / (1000 * 60)) % 60);
+		const seconds = Math.floor((diff / 1000) % 60);
+
+		document.getElementById("countdown").innerHTML =
+		  `${days} күн, ${hours} сағат, ${minutes} минут, ${seconds} секунд`;
+	  }
+
+	  updateCountdown(); // Алғашқы жүктеу
+	  const timer = setInterval(updateCountdown, 1000); // Әр секунд сайын жаңарту
+	</script>
+	<h3>📍</h3>
+	<p><strong>Мекен-жайы:</strong></p>
+	<p>
+      <a href="https://2gis.kz/almaty?m=79.229166%2C43.015635%2F11.96" target="_blank">
+	  <img src="2gis.png" style="height: 24px; border-radius: 5px;">
+        «Ақниет» мейрамханасы, Кеген ауылы, Кеген ауданы
+      </a>
+    </p>
+  </div>
+  
+  
+  <div class="main">
+	<p class="gold-glow" style="color: #FF8C00;font-size: 1.7rem;"><strong>✩✩✩<strong></p>
+  </div>
+  
+  <div class="main-3">
+	<p>Келіңіздер, тойымыздың қадірлі қонағы болыңыздар!</p>
+   </div>
+   <div class="main-4">
+	<p><strong>Той иелері:</strong> Анасы, жұбайы және ұл-қыздары</p>
+	</div>
+  <div class="main">
+	<p class="gold-glow" style="color: #FF8C00;font-size: 1.7rem;"><strong>✩✩✩<strong></p>
+  </div>
+  <div class="main-2">
+	<p>💌 Тойға қатысуды растауыңызды сұраймыз<br>👇🏿</p>
+  </div>
+  <div class="main-2">
+	<form id="inviteForm">
+    <input type="text" id="name" placeholder="Аты-жөніңіз" required>
+    <select id="status">
+      <option value="Келемін">Келемін</option>
+	  <option value="Келмеймін">Жұбайыммен келемін</option>
+      <option value="Келмеймін">Келмеймін</option>
+    </select>
+	<button type="submit">Растау</button>
+    </form>
+	</div>
+	 <div class="main">
+	<p class="gold-glow" style="color: #FF8C00;font-size: 1.7rem;"><strong>✩✩✩<strong></p>
+  </div>
+  <script>
+    const botToken = 'СІЗДІҢ_BOT_TOKEN';
+    const chatId = 'СІЗДІҢ_CHAT_ID';
+
+    document.getElementById('inviteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const status = document.getElementById('status').value;
+
+      const message = Жаңа жауап:\nАты-жөні: ${name}\nМәртебесі: ${status};
+
+      fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          alert("Хабарлама жіберілді!");
+        } else {
+          alert("Қате болды.");
+        }
+      });
+    });
+  </script>
+
+  <div class="modal" id="formModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeForm()">Х</span>
+      <iframe id="googleForm" src=""></iframe>
+    </div>
+  </div>
+  <script>
+    function openForm() {
+      const modal = document.getElementById('formModal');
+      const iframe = document.getElementById('googleForm');
+      iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeG_IzQzU-uuc1jI83fap-dzTkMc9F4IzbV32ucTBtb3yFPnw/viewform?embedded=true&hl=kk";
+      modal.style.display = 'block';
+    }
+
+    function closeForm() {
+      const modal = document.getElementById('formModal');
+      const iframe = document.getElementById('googleForm');
+      iframe.src = "";
+      modal.style.display = 'none';
+    }
+   </script>
+</body>
+</html>
